@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uber-deployment
+  labels:
+    app: uber
+spec:
+  replicas: 2  # Increased replicas for better availability
+  selector:
+    matchLabels:
+      app: uber
+  template:
+    metadata:
+      labels:
+        app: uber
+    spec:
+      containers:
+        - name: uber
+          image: sevenajay/uber:latest
+          imagePullPolicy: Always  # Ensures the latest image is pulled
+          ports:
+            - containerPort: 3000  # Port your application listens on
+          env:
+            - name: NODE_ENV
+              value: "production"  # Example of setting environment variables
+          resources:  # Resource limits for better pod management
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+          livenessProbe:  # Ensures the app is running
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:  # Ensures the app is ready to serve traffic
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 5

@@ -1,0 +1,62 @@
+/* Reset Default Styles */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #333; /* Dark text for readability */
+  line-height: 1.6;
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Improve link styles */
+a {
+  color: #0070f3; /* Default blue color */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+/* Global Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #121212;
+    color: #f5f5f5;
+  }
+
+  a {
+    color: #0a84ff;
+  }
+
+  a:hover {
+    color: #66aaff;
+  }
+}
+
+/* Accessibility Improvements */
+*:focus {
+  outline: 2px solid #0070f3;
+  outline-offset: 2px;
+}
+
+/* Responsive Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+}

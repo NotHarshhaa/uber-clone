@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uber-service
+  labels:
+    app: uber
+spec:
+  selector:
+    app: uber
+  ports:
+    - protocol: TCP
+      port: 80        # Exposed service port (external)
+      targetPort: 3000 # Application listens on this port inside the pods
+  type: LoadBalancer  # Change to NodePort if running locally (Minikube/K3s)
+  sessionAffinity: None  # Ensures requests are evenly distributed (default)
